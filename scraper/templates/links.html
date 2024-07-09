@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container text-center card p-5 mt-3">
+        <div class="text-center mt-2 p-2">
+            <h1>Link List</h1><hr>
+        </div>
+        <!-- form -->
+         <div class="row bg-light">
+            <div class="col-md-6 offset-3 ">
+                <form method="POST" class=" p-2 mx-auto bg-light">
+                    {%csrf_token%}
+                    <div class="mb-3">
+                    <input type="text" class="form-control" name="scrape" placeholder="Enter Site to scrape">
+                    </div>
+                    <div class="col-3 offset-4"><button type="submit" class="btn btn-success text-light">Srape</button>
+                    <a href="{%url 'clear'%}" class="btn btn-danger">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+         <!-- end -->
+
+        <div class="row mt-4">
+           
+            <div class="col-md-2 card ">
+                <h2>S.NO</h2>   
+            </div>
+            <div class="col-md-5 card ">
+                  <h4>NAME</h4>
+            </div>
+            <div class="col-md-5 card">
+               <h4>ADDRESS</h4>    
+            </div>
+           
+        </div>
+        
+        <div class="row">
+            {%for link in page%}
+            <div class="col-md-2 card ">
+                <p>{{forloop.counter}}</p>   
+            </div>
+            <div class="col-md-5 card ">
+                <a href="{{link.address}}" class="p-2">{{link.name}}</a><br>    
+            </div>
+            <div class="col-md-5 card">
+                <p class="p-2">{{link.address}}</p><br>    
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+ 
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
